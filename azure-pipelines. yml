@@ -1,8 +1,8 @@
 pool:
   name: work-laptop
 
-#container: ubuntu:18.04
-container: alpine:latest
+container: ubuntu:18.04
+#container: alpine:latest
 
 steps:
 - script: |
