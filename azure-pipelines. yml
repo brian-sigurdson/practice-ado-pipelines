@@ -6,5 +6,5 @@ container: ubuntu:18.04
 
 steps:
 - script: |
-    # cat /ect/*release*
+    cat /ect/*release*
     printenv
