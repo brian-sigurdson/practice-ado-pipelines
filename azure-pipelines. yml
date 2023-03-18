@@ -4,4 +4,6 @@ pool:
 container: ubuntu:18.04
 
 steps:
-- script: printenv
+- script: |
+  # printenv
+  curl https://name-bks-fa-py-1.azurewebsites.net/api/HttpTrigger1?code=P0clV4qIq_uAe8xiqAlA-lQksEVoi7Uva0qlMBfUjSZxAzFuicSXSA==&name=abcdefg
