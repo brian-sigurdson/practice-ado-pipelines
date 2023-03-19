@@ -4,8 +4,8 @@ parameters:
   type: boolean
   default: false
 
-trigger:
-- main
+# trigger:
+# - main
 
 pool:
   name: work-laptop
