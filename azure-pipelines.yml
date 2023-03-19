@@ -12,15 +12,19 @@
 trigger:
 - main
 
+variables:
+  - name: foo
+    value: contoso # triggers elseif condition
+
 pool:
   name: work-laptop
 
-container: ubuntu:18.04
 steps:
-# Node install
-- task: NodeTool@0
-  displayName: Node install
-  inputs:
-    versionSpec: '12.x' # The version we're installing
-# Write the installed version to the command line
-- script: which node
+- script: echo "start"
+- ${{ if eq(variables.foo, 'adaptum') }}:
+  - script: echo "this is adaptum"
+- ${{ elseif eq(variables.foo, 'contoso') }}: # true
+  - script: echo "this is contoso" 
+- ${{ else }}:
+  - script: echo "the value is not adaptum or contoso"
+
