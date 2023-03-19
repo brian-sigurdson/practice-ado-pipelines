@@ -1,0 +1,44 @@
+# todo
+# - pipeline input, or simply a library variable, or simply assign a random number to an env var
+# - branching
+# - looping
+# - extend another pipeline
+# - build and deploy jobs (not really deploy anything)
+#
+# Leave it at the above for now.  I need to get onto other stuff as well.
+
+#==================================================================================================
+
+trigger:
+- main
+
+pool:
+  name: work-laptop
+  demands:
+  - Agent.Name -equals wsl-ubuntu-16.04
+
+# variables:
+#   - name: foo
+#     value: contoso # triggers elseif condition
+
+# steps:
+# - script: echo "start"
+# - ${{ if eq(variables.foo, 'adaptum') }}:
+#   - script: echo "this is adaptum"
+# - ${{ elseif eq(variables.foo, 'contoso') }}: # true
+#   - script: echo "this is contoso" 
+# - ${{ else }}:
+#   - script: echo "the value is not adaptum or contoso"
+
+parameters:
+- name: listOfFruits
+  type: object
+  default:
+  - fruitName: 'apple'
+    colors: ['red','green']
+  - fruitName: 'lemon'
+    colors: ['yellow']
+steps:
+- ${{ each fruit in parameters.listOfFruits }} :
+  - ${{ each fruitColor in fruit.colors}} :
+    - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}

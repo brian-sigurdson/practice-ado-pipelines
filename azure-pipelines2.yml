@@ -1,0 +1,85 @@
+# todo
+# - pipeline input, or simply a library variable, or simply assign a random number to an env var
+# - branching
+# - looping
+# - extend another pipeline
+# - build and deploy jobs (not really deploy anything)
+#
+# Leave it at the above for now.  I need to get onto other stuff as well.
+
+#==================================================================================================
+# test 1
+
+# trigger:
+# - main
+
+# pool:
+#   name: work-laptop
+
+# parameters:
+# - name: succeed
+#   displayName: Succeed or fail
+#   type: boolean
+#   default: false  
+
+#
+# I get an error when trying to specify a container and then jobs
+# , but removing container runs properly on the agent.
+#
+# The container seems to be considered a job itself, because you can run steps when a container is specified
+# 
+# container: ubuntu:18.04
+# 
+
+# jobs:
+# - job: Work
+#   steps:
+#   - script: echo Hello, world!
+#     displayName: 'Run a one-line script'
+
+#   # Only run this command if the succeed variable is set to false
+#   - script: echo parameters.succeed=${{ parameters.succeed }}
+#     condition: eq(${{ parameters.succeed }}, false)
+
+# # This job creates a work item, and only runs if the previous job failed
+# - job: ErrorHandler
+#   dependsOn: Work
+#   condition: failed()
+#   steps: 
+#   - bash: |
+#       echo The dependsOn job failed.
+
+#==================================================================================================
+# test 2
+#
+# Doesn't work because I only have a single agent running on 
+
+resources:
+  containers:
+  - container: u16
+    image: ubuntu:16.04
+
+  - container: u18
+    image: ubuntu:18.04
+
+  - container: u20
+    image: ubuntu:20.04
+
+jobs:
+- job: RunInContainer
+  pool:
+    name: work-laptop
+
+  strategy:
+    matrix:
+      # ubuntu16:
+      #   containerResource: u16
+      ubuntu18:
+        containerResource: u18
+      ubuntu20:
+        containerResource: u20
+
+  container: $[ variables['containerResource'] ]
+
+  steps:
+  - script: printenv     

@@ -1,0 +1,26 @@
+# todo
+# - pipeline input, or simply a library variable, or simply assign a random number to an env var
+# - branching
+# - looping
+# - extend another pipeline
+# - build and deploy jobs (not really deploy anything)
+#
+# Leave it at the above for now.  I need to get onto other stuff as well.
+
+#==================================================================================================
+
+trigger:
+- main
+
+pool:
+  name: work-laptop
+
+container: ubuntu:18.04
+steps:
+# Node install
+- task: NodeTool@0
+  displayName: Node install
+  inputs:
+    versionSpec: '12.x' # The version we're installing
+# Write the installed version to the command line
+- script: which node
