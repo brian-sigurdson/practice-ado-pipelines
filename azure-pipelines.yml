@@ -15,20 +15,31 @@ trigger:
 pool:
   name: work-laptop
 
-variables:
-  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+# start.yaml
+parameters:
+- name: myStringName
+  type: string
+  default: a string value
+- name: myMultiString
+  type: string
+  default: default
+  values:
+  - default
+  - ubuntu
+- name: myNumber
+  type: number
+  default: 2
+  values:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+- name: myBoolean
+  type: boolean
+  default: true
 
-stages:
-- stage: A
-  jobs:
-  - job: A1
-    steps:
-      - script: echo Hello Stage A!
-
-- stage: B
-  condition: and(succeeded(), eq(variables.isMain, 'true'))
-  jobs:
-  - job: B1
-    steps:
-      - script: echo Hello Stage B!
-      - script: echo $(isMain)
+steps: 
+- ${{ each parameter in parameters }}:
+  - script: echo ${{ parameter.Key }} 
+  - script: echo ${{ parameter.Value }}
