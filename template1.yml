@@ -11,4 +11,4 @@ parameters:
 
 pool: ${{ parameters.userpool }}
 steps:
-- script: printenv
+- script: cat /etc/*release*
