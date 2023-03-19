@@ -8,3 +8,4 @@ steps:
 - script: |
     cat /etc/*release*
     printenv
+    bash ./files/a_script.sh 
