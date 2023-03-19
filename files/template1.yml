@@ -9,6 +9,8 @@ parameters:
   - private-pool-2
   - work-laptop
 
-pool: ${{ parameters.userpool }}
+pool: 
+  name: ${{ parameters.userpool }}
+  
 steps:
 - script: cat /etc/*release*
