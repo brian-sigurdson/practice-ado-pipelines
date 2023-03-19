@@ -14,7 +14,6 @@ trigger:
 
 # azure-pipelines.yml
 extends:
-  # template: ./files/template1.yml
-  template: template1.yml
+  template: ./files/template1.yml
   parameters:
     userpool: work-laptop
