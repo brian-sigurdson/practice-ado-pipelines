@@ -1,0 +1,14 @@
+# template.yml
+parameters:
+- name: userpool
+  type: string
+  default: Azure Pipelines
+  values:
+  - Azure Pipelines
+  - private-pool-1
+  - private-pool-2
+  - work-laptop
+
+pool: ${{ parameters.userpool }}
+steps:
+- script: printenv

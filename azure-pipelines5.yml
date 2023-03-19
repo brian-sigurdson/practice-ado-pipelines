@@ -1,0 +1,45 @@
+# todo
+# - pipeline input, or simply a library variable, or simply assign a random number to an env var
+# - branching
+# - looping
+# - extend another pipeline
+# - build and deploy jobs (not really deploy anything)
+#
+# Leave it at the above for now.  I need to get onto other stuff as well.
+
+#==================================================================================================
+
+trigger:
+- main
+
+pool:
+  name: work-laptop
+
+# start.yaml
+parameters:
+- name: myStringName
+  type: string
+  default: a string value
+- name: myMultiString
+  type: string
+  default: default
+  values:
+  - default
+  - ubuntu
+- name: myNumber
+  type: number
+  default: 2
+  values:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+- name: myBoolean
+  type: boolean
+  default: true
+
+steps: 
+- ${{ each parameter in parameters }}:
+  - script: echo ${{ parameter.Key }} 
+  - script: echo ${{ parameter.Value }}
