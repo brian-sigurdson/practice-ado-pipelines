@@ -14,6 +14,8 @@ trigger:
 
 pool:
   name: work-laptop
+  demands:
+  - Agent.Name -equals wsl-ubuntu-16.04
 
 # variables:
 #   - name: foo
