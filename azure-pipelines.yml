@@ -1,10 +1,23 @@
+trigger:
+- main
+
 pool:
   name: work-laptop
 
 container: ubuntu:18.04
 
+# todo
+# - pipeline input, or simply a library variable, or simply assign a random number to an env var
+# - branching
+# - looping
+# - extend another pipeline
+# - build and deploy jobs (not really deploy anything)
+#
+# Leave it at the above for now.  I need to get onto other stuff as well.
+
 steps:
 - script: |
-    cat /etc/*release*
-    printenv
+    # cat /etc/*release*
+    # printenv
     bash ./files/a_script.sh 
+    echo $(System.DefaultWorkingDirectory)
