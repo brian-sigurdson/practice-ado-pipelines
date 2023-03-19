@@ -8,22 +8,20 @@
 # Leave it at the above for now.  I need to get onto other stuff as well.
 
 #==================================================================================================
-
-trigger:
-- main
-
-pool:
-  name: work-laptop
-
-#==================================================================================================
 # test 1
 
-parameters:
-- name: succeed
-  displayName: Succeed or fail
-  type: boolean
-  default: false  
-  
+# trigger:
+# - main
+
+# pool:
+#   name: work-laptop
+
+# parameters:
+# - name: succeed
+#   displayName: Succeed or fail
+#   type: boolean
+#   default: false  
+
 #
 # I get an error when trying to specify a container and then jobs
 # , but removing container runs properly on the agent.
@@ -53,6 +51,9 @@ parameters:
 
 #==================================================================================================
 # test 2
+
+pool:
+  name: work-laptop
 
 resources:
   containers:
