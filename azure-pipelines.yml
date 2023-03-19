@@ -54,9 +54,6 @@
 #
 # Doesn't work because I only have a single agent running on 
 
-pool:
-  name: work-laptop
-
 resources:
   containers:
   - container: u16
@@ -71,7 +68,7 @@ resources:
 jobs:
 - job: RunInContainer
   pool:
-    vmImage: 'ubuntu-latest'
+    name: work-laptop
 
   strategy:
     matrix:
