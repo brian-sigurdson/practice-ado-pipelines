@@ -9,8 +9,10 @@ parameters:
   - private-pool-2
   - work-laptop
 
+# getting the following error
+# /files/template1.yml (Line: 12, Col: 1): Unexpected value 'pool'
 pool: 
   name: ${{ parameters.userpool }}
-  
+
 steps:
 - script: cat /etc/*release*
