@@ -12,19 +12,31 @@
 trigger:
 - main
 
-variables:
-  - name: foo
-    value: contoso # triggers elseif condition
-
 pool:
   name: work-laptop
 
-steps:
-- script: echo "start"
-- ${{ if eq(variables.foo, 'adaptum') }}:
-  - script: echo "this is adaptum"
-- ${{ elseif eq(variables.foo, 'contoso') }}: # true
-  - script: echo "this is contoso" 
-- ${{ else }}:
-  - script: echo "the value is not adaptum or contoso"
+# variables:
+#   - name: foo
+#     value: contoso # triggers elseif condition
 
+# steps:
+# - script: echo "start"
+# - ${{ if eq(variables.foo, 'adaptum') }}:
+#   - script: echo "this is adaptum"
+# - ${{ elseif eq(variables.foo, 'contoso') }}: # true
+#   - script: echo "this is contoso" 
+# - ${{ else }}:
+#   - script: echo "the value is not adaptum or contoso"
+
+parameters:
+- name: listOfFruits
+  type: object
+  default:
+  - fruitName: 'apple'
+    colors: ['red','green']
+  - fruitName: 'lemon'
+    colors: ['yellow']
+steps:
+- ${{ each fruit in parameters.listOfFruits }} :
+  - ${{ each fruitColor in fruit.colors}} :
+    - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
