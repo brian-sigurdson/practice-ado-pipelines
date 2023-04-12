@@ -12,10 +12,11 @@
 trigger: none
 pr: none 
 
-
-jobs:
-  - job: print_vars
-    steps:
-      - bash: |
-        echo "$(buildProject)"
-        echo "$(s3LogsUri)"
+stages:
+  - stage: print_vars
+    jobs:
+      - job: print_vars
+        steps:
+          - bash: |
+              echo "$(buildProject)"
+              echo "$(s3LogsUri)"
