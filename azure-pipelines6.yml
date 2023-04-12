@@ -1,0 +1,19 @@
+# todo
+# - pipeline input, or simply a library variable, or simply assign a random number to an env var
+# - branching
+# - looping
+# - extend another pipeline
+# - build and deploy jobs (not really deploy anything)
+#
+# Leave it at the above for now.  I need to get onto other stuff as well.
+
+#==================================================================================================
+
+trigger:
+- main
+
+# azure-pipelines.yml
+extends:
+  template: ./files/template1.yml
+  parameters:
+    userpool: work-laptop
