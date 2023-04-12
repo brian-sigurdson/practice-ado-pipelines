@@ -12,8 +12,10 @@
 trigger: none
 pr: none 
 
+
 jobs:
   - job: print_vars
-    - bash: |
-      echo "buildProject: ${{ parameters.buildProject }}"
-      echo "s3LogsUri: ${{ parameters.s3LogsUri }}"
+    steps:
+      - bash: |
+        echo "buildProject: ${{ parameters.buildProject }}"
+        echo "s3LogsUri: ${{ parameters.s3LogsUri }}
