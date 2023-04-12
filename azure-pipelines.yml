@@ -17,5 +17,5 @@ jobs:
   - job: print_vars
     steps:
       - bash: |
-        echo "buildProject: $(buildProject)"
-        echo "s3LogsUri: $(s3LogsUri)"
+        echo "$(buildProject)"
+        echo "$(s3LogsUri)"
