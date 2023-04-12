@@ -9,11 +9,10 @@
 
 #==================================================================================================
 
-trigger:
-- main
+trigger: none
+pr: none 
 
-# azure-pipelines.yml
-extends:
-  template: ./files/template1.yml
-  parameters:
-    userpool: work-laptop
+jobs:
+  - job: print_vars
+    buildProject: ${{ parameters.buildProject }}
+    s3LogsUri: ${{ parameters.s3LogsUri }}  
