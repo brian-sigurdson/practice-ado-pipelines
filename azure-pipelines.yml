@@ -14,5 +14,6 @@ pr: none
 
 jobs:
   - job: print_vars
-    buildProject: ${{ parameters.buildProject }}
-    s3LogsUri: ${{ parameters.s3LogsUri }}  
+    - bash: |
+      echo "buildProject: ${{ parameters.buildProject }}"
+      echo "s3LogsUri: ${{ parameters.s3LogsUri }}"
