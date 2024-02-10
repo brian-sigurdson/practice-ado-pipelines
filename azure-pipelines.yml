@@ -22,6 +22,12 @@ resources:
 
 
 stages:
+  - stage: checkout
+    jobs:
+      - job: checkout
+        steps:
+          - checkout: self
+            name: checkout_here
   - stage: print_vars
     jobs:
       - job: print_vars
