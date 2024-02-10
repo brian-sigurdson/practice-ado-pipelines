@@ -27,6 +27,7 @@ stages:
       - job: checkout
         steps:
           - checkout: self
+          - bash: echo 'does this cause usage history to change?'
             name: checkout_here
   - stage: print_vars
     jobs:
