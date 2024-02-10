@@ -12,6 +12,15 @@
 trigger: none
 pr: none 
 
+resources:
+  repositories:
+    - repository: practice-azure-ado
+      type: github
+      name: brian-sigurdson/practice-azure-ado
+      ref: refs/heads/main
+      endpoint: brian-sigurdson
+
+
 stages:
   - stage: print_vars
     jobs:
