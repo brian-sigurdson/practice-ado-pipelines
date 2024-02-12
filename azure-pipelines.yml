@@ -27,5 +27,5 @@ stages:
           - bash: |
               echo "$(buildProject)"
               echo "$(s3LogsUri)"
-              echo $(pwd)
-              echo $(ls -la)
+              pwd
+              ls -la
