@@ -25,7 +25,5 @@ stages:
       - job: print_vars
         steps:
           - bash: |
-              echo "$(buildProject)"
-              echo "$(s3LogsUri)"
               pwd
               ls -la
