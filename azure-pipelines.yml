@@ -12,22 +12,13 @@
 trigger: none
 pr: none 
 
-resources:
-  repositories:
-    - repository: practice-azure-ado
-      type: github
-      name: brian-sigurdson/practice-azure-ado
-      ref: refs/heads/main
-      endpoint: brian-sigurdson
-
-
 stages:
   - stage: checkout
     jobs:
       - job: checkout
         steps:
           - checkout: self
-          - bash: echo 'does this cause usage history to change?'
+          - bash: echo 'some message here'
             name: checkout_here
   - stage: print_vars
     jobs:
