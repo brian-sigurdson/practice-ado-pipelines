@@ -18,7 +18,7 @@ stages:
       - job: checkout
         steps:
           - checkout: self
-          - bash: echo 'some message here'
+          - bash: echo 'this is a different message now'
             name: checkout_here
   - stage: print_vars
     jobs:
